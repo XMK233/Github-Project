@@ -1,0 +1,75 @@
+#lines of data
+
+1541
+
+#delete following EVs because of the correlation:
+
+'top_tco', 'churn', 'nnn', 'contributor', 'commentor', 'author', 'top_iso'
+
+#redundant EVs:
+
+none
+
+#budgeted DFs:
+
+69
+
+#allocation of DFs: 
+
+fit <- lrm(status ~ 
+             rcs(nnj, 5) + rcs(jnj, 5) + 
+             rcs(njn, 5) + rcs(njj, 5) + rcs(top_rso, 3) + 
+             rcs(jnn, 3) + rcs(jjj, 3) + 
+             entropy + size + jjn
+           ,
+           data=data1, x=T, y=T)
+
+#AUC and the optimism, chi-square and partial effect:
+
+         AUC AUC_optimism 
+  0.80576779   0.02985878 
+                Wald Statistics          Response: status 
+
+ Factor          Chi-Square d.f. P     
+ nnj               3.19      4   0.5258
+  Nonlinear        1.03      3   0.7938
+ jnj               7.66      4   0.1051
+  Nonlinear        7.49      3   0.0579
+ njn              36.05      4   <.0001
+  Nonlinear        4.99      3   0.1725
+ njj              11.23      4   0.0241
+  Nonlinear        1.63      3   0.6537
+ top_rso           5.97      2   0.0506
+  Nonlinear        3.60      1   0.0578
+ jnn               8.53      2   0.0141
+  Nonlinear        2.27      1   0.1317
+ jjj               7.77      2   0.0206
+  Nonlinear        7.01      1   0.0081
+ entropy           0.02      1   0.8944
+ size              0.76      1   0.3846
+ jjn               0.02      1   0.8876
+ TOTAL NONLINEAR  26.71     15   0.0312
+ TOTAL           152.71     25   <.0001
+             Effects              Response : status 
+
+ Factor      Low      High       Diff.      Effect    S.E.     Lower 0.95 Upper 0.95
+ nnj         0.000000   0.117650   0.117650  0.300130 0.248360 -0.186650   0.78691  
+  Odds Ratio 0.000000   0.117650   0.117650  1.350000       NA  0.829730   2.19660  
+ jnj         0.000000   0.071429   0.071429  0.516050 0.247590  0.030770   1.00130  
+  Odds Ratio 0.000000   0.071429   0.071429  1.675400       NA  1.031200   2.72190  
+ njn         0.057143   0.363640   0.306490 -1.343000 0.301760 -1.934500  -0.75160  
+  Odds Ratio 0.057143   0.363640   0.306490  0.261050       NA  0.144500   0.47161  
+ njj         0.000000   0.076923   0.076923 -0.333720 0.276310 -0.875280   0.20784  
+  Odds Ratio 0.000000   0.076923   0.076923  0.716250       NA  0.416750   1.23100  
+ top_rso     0.148670   0.296880   0.148210  0.118940 0.249930 -0.370920   0.60879  
+  Odds Ratio 0.148670   0.296880   0.148210  1.126300       NA  0.690100   1.83820  
+ jnn         0.000000   0.250000   0.250000  0.553100 1.181500 -1.762600   2.86880  
+  Odds Ratio 0.000000   0.250000   0.250000  1.738600       NA  0.171590  17.61600  
+ jjj         0.074074   0.272730   0.198650 -0.670840 0.277460 -1.214600  -0.12703  
+  Odds Ratio 0.074074   0.272730   0.198650  0.511280       NA  0.296810   0.88071  
+ entropy     0.615050   0.886330   0.271270  0.014601 0.110050 -0.201090   0.23029  
+  Odds Ratio 0.615050   0.886330   0.271270  1.014700       NA  0.817840   1.25900  
+ size        0.000000 121.000000 121.000000  0.039740 0.045705 -0.049841   0.12932  
+  Odds Ratio 0.000000 121.000000 121.000000  1.040500       NA  0.951380   1.13810  
+ jjn         0.000000   0.333330   0.333330  0.195740 1.384700 -2.518200   2.90970  
+  Odds Ratio 0.000000   0.333330   0.333330  1.216200       NA  0.080603  18.35200  

@@ -1,0 +1,5 @@
+效果不好被删掉的。
+baystation, neo4j, nixpkgs, origin, rails, sylius, symfony, wp_calypso, xbmc。
+
+这些项目是被排除了的项目，可能是因为比如数据太少，自由度上线太低等：
+akka, bootstrap, mono, terraform
